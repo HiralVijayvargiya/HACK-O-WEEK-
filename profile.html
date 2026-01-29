@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiral Vijayvargiya - Portfolio</title>
+    <style>
+        /* ===== Basic Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ===== Body ===== */
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            background-color: #0a66c2;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ===== Sections ===== */
+        .section {
+            max-width: 900px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+
+        .section h2 {
+            color: #0a66c2;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            margin-top: 20px;
+        }
+
+        /* Highlight text */
+        .highlight {
+            color: #0a66c2;
+        }
+
+        /* ===== Home Section Layout ===== */
+        .home-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Left text */
+        .home-text {
+            max-width: 600px;
+        }
+
+        .home-text h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .home-text p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Profile Photo - Circle Crop */
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0a66c2;
+        }
+
+        /* ===== Skills ===== */
+        .skills li {
+            margin-bottom: 5px;
+        }
+
+        /* ===== Projects ===== */
+        .project {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        /* ===== Contact Form ===== */
+        form {
+            max-width: 400px;
+            margin-top: 15px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #0a66c2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        form button:hover {
+            background-color: #0955a7;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        .email-link {
+            color: #0a66c2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .home-content {
+                flex-direction: column-reverse; /* photo upar, text neeche */
+                text-align: center;
+            }
+
+            .home-text h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Hiral Vijayvargiya</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="home-content">
+            <div class="home-text">
+                <h1>Hiral Vijayvargiya</h1>
+                <p>Full-Stack Web Developer & Student Entrepreneur</p>
+                <p class="highlight">Symbiosis Institute of Technology, Nagpur</p>
+                <p> I’m passionate about building a future where I can combine these domains
+            to create real impact through innovation, leadership, and problem-solving.
+            I believe in thinking big, learning consistently, staying disciplined,
+            and building strong professional networks.</p>
+            </div>
+            <img src=""C:\Users\SIT.LAB7\Downloads\Screenshot_29-1-2026_94837_web.whatsapp.com.jpeg"" alt="Hiral Vijayvargiya" class="profile-photo">
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <ul class="skills">
+            <li>• HTML5, CSS3, JavaScript</li>
+            <li>• Responsive Web Design</li>
+            <li>• C Programming</li>
+            <li>• UI/UX Design</li>
+            <li>• Startup Development</li>
+        </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Fitsnups</h3>
+            <p>Fashion-tech startup app for outfit recommendations and streetwear styling.</p>
+        </div>
+        <div class="project">
+            <h3>Hackronauts</h3>
+            <p>Hackathon project showcasing team collaboration and innovative solutions.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <p>Let's connect! <a href="mailto:hiral.vijayvargiya.batch2025@sitnagpur.siu.edu.in" class="email-link">shobhitsingh.chouhan.batch2025@sitnagpur.siu.edu.in</a></p>
+        
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Hiral Vijayvargiya. All rights reserved.</p>
+        <p><a href="mailto:hiral.vijayvargiya.batch2025@sitnagpur.siu.edu.in" class="email-link">hiral.vijayvargiya.batch2025@sitnagpur.siu.edu.in</a></p>
+    </footer>
+</body>
+</html>
