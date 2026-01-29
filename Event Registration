@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SIT DJ Concert Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(135deg, rgba(0,0,0,0.75), rgba(30,0,60,0.85)),
+        url("https://images.unsplash.com/photo-1506157786151-b8491531f063");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:90%;
+    max-width:750px;
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(18px);
+    border-radius:22px;
+    padding:40px;
+    box-shadow:0 0 50px rgba(255,0,150,0.4);
+    color:#fff;
+}
+
+h1{
+    text-align:center;
+    font-size:34px;
+    font-weight:700;
+    background:linear-gradient(90deg,#ff00cc,#00eaff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+h2{
+    text-align:center;
+    font-size:15px;
+    font-weight:300;
+    opacity:0.9;
+    margin-bottom:25px;
+}
+
+.section{
+    margin-top:28px;
+    font-size:18px;
+    font-weight:600;
+    border-left:5px solid #ff00cc;
+    padding-left:12px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-size:14px;
+}
+
+input, select{
+    width:100%;
+    margin-top:6px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#111;
+    color:#fff;
+    outline:none;
+}
+
+input::placeholder{
+    color:#aaa;
+}
+
+.row{
+    display:flex;
+    gap:15px;
+}
+
+.row div{
+    flex:1;
+}
+
+.checkbox{
+    margin-top:15px;
+}
+
+.checkbox input{
+    width:auto;
+    margin-right:8px;
+}
+
+button{
+    margin-top:35px;
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    font-weight:700;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#ff00cc,#00eaff);
+    color:black;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px #ff00cc;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    animation:fadeIn 1s ease-in-out;
+}
+
+.success h1{
+    font-size:36px;
+}
+
+.success p{
+    margin-top:15px;
+    font-size:16px;
+    opacity:0.9;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.9);}
+    to{opacity:1; transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="formBox">
+
+    <h1>🎧 DJ CONCERT NIGHT 🎧</h1>
+    <h2>Symbiosis Institute of Technology</h2>
+
+    <div class="section">Event Details</div>
+    <p>📍 Venue: SIT Open Ground</p>
+    <p>📅 Date: 15 March 2026 | ⏰ 6:00 PM Onwards</p>
+    <p>🎟 Entry Type: <b>PAID PASS ONLY</b></p>
+
+    <form onsubmit="submitForm(event)">
+
+        <div class="section">Participant Information</div>
+
+        <label>Full Name *</label>
+        <input type="text" required>
+
+        <label>PRN / Student ID *</label>
+        <input type="text" required>
+
+        <div class="row">
+            <div>
+                <label>Department</label>
+                <select>
+                    <option>Computer Engineering</option>
+                    <option>IT</option>
+                    <option>Mechanical</option>
+                    <option>Civil</option>
+                    <option>ENTC</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div>
+                <label>Year</label>
+                <select>
+                    <option>First</option>
+                    <option>Second</option>
+                    <option>Third</option>
+                    <option>Fourth</option>
+                    <option>Faculty</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <label>Email *</label>
+                <input type="email" required>
+            </div>
+            <div>
+                <label>Mobile *</label>
+                <input type="tel" pattern="[0-9]{10}" placeholder="10-digit number" required>
+            </div>
+        </div>
+
+        <div class="section">Pass Details</div>
+
+        <div class="row">
+            <div>
+                <label>Number of Passes</label>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div>
+                <label>Seating</label>
+                <select>
+                    <option>General</option>
+                    <option>VIP</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section">Payment Mode</div>
+        <select>
+            <option>UPI</option>
+            <option>Debit / Credit Card</option>
+            <option>Cash (On Campus)</option>
+        </select>
+
+        <div class="section">Consent</div>
+        <div class="checkbox">
+            <input type="checkbox" required>
+            I agree to college rules & event guidelines *
+        </div>
+
+        <div class="checkbox">
+            <input type="checkbox">
+            I allow photography & videography
+        </div>
+
+        <button type="submit">🔥 CONFIRM PAID REGISTRATION 🔥</button>
+    </form>
+
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="container success" id="successBox">
+    <h1>✅ REGISTRATION SUCCESSFUL</h1>
+    <p>Your paid pass for <b>DJ Concert Night</b> has been registered.</p>
+    <p>🎫 Please carry your college ID on the event day.</p>
+    <p>🔥 Get ready to vibe & party hard!</p>
+</div>
+
+<script>
+function submitForm(event){
+    event.preventDefault();
+    document.getElementById("formBox").style.display="none";
+    document.getElementById("successBox").style.display="block";
+}
+</script>
+
+</body>
+</html>
