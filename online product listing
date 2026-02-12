@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora Boutique</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  background:#0f172a;
+  color:#f1f5f9;
+}
+
+nav{
+  background:#0b1120;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+nav a{
+  color:#94a3b8;
+  text-decoration:none;
+  margin-right:20px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#14b8a6;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:1px;
+  color:#14b8a6;
+}
+
+.cart{
+  background:#14b8a6;
+  color:#0b1120;
+  padding:6px 14px;
+  border-radius:25px;
+  font-weight:500;
+}
+
+.container{
+  padding:50px 40px;
+}
+
+h2{
+  margin-bottom:25px;
+  font-weight:500;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:#1e293b;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+  overflow:hidden;
+  transition:0.3s;
+  text-align:center;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 10px 30px rgba(20,184,166,0.3);
+}
+
+.product-card{
+  padding:18px;
+}
+
+.price{
+  font-weight:600;
+  margin:8px 0;
+  color:#14b8a6;
+}
+
+button{
+  background:#14b8a6;
+  color:#0b1120;
+  border:none;
+  padding:9px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#22d3ee;
+}
+
+.hidden{
+  display:none;
+}
+
+.emoji{
+  font-size:60px;
+  padding-top:25px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">Velora Boutique</div>
+<div>
+<a onclick="showHome()">Home</a>
+<span class="cart">🛒 <span id="cart-count">0</span></span>
+</div>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="container" id="home">
+<h2>Explore Our Collections</h2>
+<div class="grid">
+
+<div class="card" onclick="showCategory('electronics')">
+<div class="emoji">📱</div>
+<h3>Electronics</h3>
+</div>
+
+<div class="card" onclick="showCategory('fashion')">
+<div class="emoji">👗</div>
+<h3>Fashion</h3>
+</div>
+
+<div class="card" onclick="showCategory('footwear')">
+<div class="emoji">👟</div>
+<h3>Footwear</h3>
+</div>
+
+<div class="card" onclick="showCategory('accessories')">
+<div class="emoji">🕶️</div>
+<h3>Accessories</h3>
+</div>
+
+</div>
+</div>
+
+<!-- CATEGORY PAGE -->
+<div class="container hidden" id="categoryPage">
+<h2 id="categoryTitle"></h2>
+<div class="grid" id="productGrid"></div>
+</div>
+
+<script>
+
+const products = {
+electronics: [
+{ name:"Smartphone", price:15999, icon:"📱" },
+{ name:"Laptop", price:55999, icon:"💻" },
+{ name:"Headphones", price:2999, icon:"🎧" },
+{ name:"Smart Watch", price:4999, icon:"⌚" },
+{ name:"Camera", price:34999, icon:"📷" },
+{ name:"Bluetooth Speaker", price:1999, icon:"🔊" }
+],
+
+fashion: [
+{ name:"Casual T-Shirt", price:799, icon:"👕" },
+{ name:"Denim Jacket", price:2499, icon:"🧥" },
+{ name:"Summer Dress", price:1899, icon:"👗" },
+{ name:"Hoodie", price:1499, icon:"🧢" },
+{ name:"Formal Shirt", price:1299, icon:"👔" },
+{ name:"Jeans", price:1999, icon:"👖" }
+],
+
+footwear: [
+{ name:"Running Shoes", price:2999, icon:"👟" },
+{ name:"Sneakers", price:3499, icon:"👟" },
+{ name:"Formal Shoes", price:3999, icon:"👞" },
+{ name:"Sandals", price:999, icon:"🩴" },
+{ name:"Boots", price:4599, icon:"🥾" },
+{ name:"Slippers", price:499, icon:"🥿" }
+],
+
+accessories: [
+{ name:"Sunglasses", price:899, icon:"🕶️" },
+{ name:"Backpack", price:1799, icon:"🎒" },
+{ name:"Watch", price:2499, icon:"⌚" },
+{ name:"Wallet", price:699, icon:"👛" },
+{ name:"Cap", price:499, icon:"🧢" },
+{ name:"Bracelet", price:599, icon:"📿" }
+]
+};
+
+function updateCart(){
+document.getElementById("cart-count").innerText =
+localStorage.getItem("cartCount") || 0;
+}
+
+function addToCart(){
+let count = parseInt(localStorage.getItem("cartCount")) || 0;
+count++;
+localStorage.setItem("cartCount",count);
+updateCart();
+}
+
+function showHome(){
+document.getElementById("home").classList.remove("hidden");
+document.getElementById("categoryPage").classList.add("hidden");
+}
+
+function showCategory(category){
+document.getElementById("home").classList.add("hidden");
+document.getElementById("categoryPage").classList.remove("hidden");
+
+document.getElementById("categoryTitle").innerText =
+category.charAt(0).toUpperCase() + category.slice(1);
+
+let grid = document.getElementById("productGrid");
+grid.innerHTML="";
+
+products[category].forEach(product=>{
+grid.innerHTML += `
+<div class="card">
+<div class="emoji">${product.icon}</div>
+<div class="product-card">
+<h4>${product.name}</h4>
+<p class="price">₹${product.price}</p>
+<p>Premium quality ${product.name.toLowerCase()} with elegant finish and modern design.</p>
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+</div>
+`;
+});
+}
+
+updateCart();
+
+</script>
+
+</body>
+</html>
